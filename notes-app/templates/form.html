@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{if .ID}}Edit Note{{else}}New Note{{end}}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <a href="/notes">&larr; Back to notes</a>
+  <h1>{{if .ID}}Edit Note{{else}}New Note{{end}}</h1>
+
+  <form method="POST" action="{{if .ID}}/notes/{{.ID}}{{else}}/notes{{end}}">
+    <label>Subject
+      <input type="text" name="subject" value="{{.Subject}}" required>
+    </label>
+
+    <label>Body
+      <textarea name="body" rows="10" required>{{.Body}}</textarea>
+    </label>
+
+    <label>Tags <small>(comma separated)</small>
+      <input type="text" name="tags" value="{{.TagsString}}" placeholder="go, school, ideas">
+    </label>
+
+    <button type="submit">Save</button>
+  </form>
+</body>
+</html>

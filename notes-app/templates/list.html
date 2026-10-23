@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>My Notes</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>My Notes</h1>
+  <a class="button" href="/notes/new">+ New Note</a>
+
+  {{if not .}}
+    <p>No notes yet — create your first one.</p>
+  {{end}}
+
+  <ul class="note-list">
+    {{range .}}
+      <li>
+        <a href="/notes/{{.ID}}"><strong>{{.Subject}}</strong></a>
+        {{if .Tags}}
+          <span class="tags">
+            {{range .Tags}}<span class="tag">{{.}}</span>{{end}}
+          </span>
+        {{end}}
+      </li>
+    {{end}}
+  </ul>
+</body>
+</html>
